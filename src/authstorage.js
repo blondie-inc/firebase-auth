@@ -158,6 +158,7 @@ fireauth.authStorage.Manager = function(
    *     with storage event triggering but storage not updated.
    */
   this.safariLocalStorageNotSynced_ = safariLocalStorageNotSynced;
+  console.log('[--- authstorage.js:161 ---]', safariLocalStorageNotSynced);
   /**
    *  @private {boolean} Whether browser can detect storage event when it
    *     had already been pushed to the background. This may happen in some
@@ -166,6 +167,7 @@ fireauth.authStorage.Manager = function(
   this.runsInBackground_ = runsInBackground;
   /**  @const @private {boolean} Whether browser web storage is supported. */
   this.webStorageSupported_ = webStorageSupported;
+  console.log('[--- authstorage.js:170 ---]', webStorageSupported);
 
   /**
    * @const @private {!Object.<string, !Array<function()>>} The storage event
@@ -179,9 +181,11 @@ fireauth.authStorage.Manager = function(
      * @private {!fireauth.storage.Storage} Persistence storage.
      */
     this.persistentStorage_ = storageFactory.makePersistentStorage();
+    console.log('[--- authstorage.js:184 ---]', 'made persisten storage');
   } catch (e) {
     // Default to in memory storage if the preferred persistent storage is not
     // supported.
+    console.log('[--- authstorage.js:187 ---]', 'make in memory storage');
     this.persistentStorage_ = storageFactory.makeInMemoryStorage();
     // Do not use indexedDB fallback.
     this.localStorageNotSynchronized_ = false;
@@ -400,6 +404,7 @@ fireauth.authStorage.Manager.prototype.addListener =
     function(dataKey, id, listener) {
   var key = this.getKeyName_(dataKey, id);
   // Initialize local map for current key if web storage is supported.
+      console.log('[--- authstorage.js:403 ---]', this.webStorageSupported_);
   if (this.webStorageSupported_) {
     this.localMap_[key] = goog.global['localStorage']['getItem'](key);
   }
