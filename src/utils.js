@@ -1439,6 +1439,7 @@ fireauth.util.isIndexedDBAvailable = function() {
 
 /** @return {boolean} Whether current mode is Auth handler or iframe. */
 fireauth.util.isAuthHandlerOrIframe = function() {
+  console.log('[--- utils.js:1442 ---]', goog.global);
   return !!(fireauth.util.getObjectRef('fireauth.oauthhelper', goog.global) ||
             fireauth.util.getObjectRef('fireauth.iframe', goog.global));
 };
@@ -1453,9 +1454,13 @@ fireauth.util.persistsStorageWithIndexedDB = function() {
 
   // In a browser environment, when an iframe and a popup web storage are not
   // synchronized, use the indexedDB fireauth.storage.Storage implementation.
-  return (fireauth.util.isLocalStorageNotSynchronized() ||
-          !fireauth.util.isAuthHandlerOrIframe()) &&
-         fireauth.util.isIndexedDBAvailable();
+  // return (fireauth.util.isLocalStorageNotSynchronized() ||
+  //         !fireauth.util.isAuthHandlerOrIframe()) &&
+  //        fireauth.util.isIndexedDBAvailable();
+
+  console.log('[--- utils.js:1461 ---]', 'persist storage with indexed db');
+
+  return false;
 };
 
 

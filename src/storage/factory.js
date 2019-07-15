@@ -35,6 +35,7 @@ goog.require('fireauth.util');
  * @constructor
  */
 fireauth.storage.Factory = function(env) {
+  console.log('[--- factory.js:38 ---]', env);
   /** @const @private {!fireauth.storage.Factory.EnvConfigType} */
   this.env_ = env;
 };
@@ -101,7 +102,7 @@ fireauth.storage.Factory.getEnvConfig = function() {
   envMap[fireauth.util.Env.REACT_NATIVE] =
       fireauth.storage.Factory.EnvConfig.REACT_NATIVE;
   envMap[fireauth.util.Env.WORKER] =
-      fireauth.storage.Factory.EnvConfig.WORKER;    
+      fireauth.storage.Factory.EnvConfig.WORKER;
   return envMap[fireauth.util.getEnvironment()];
 };
 
