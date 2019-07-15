@@ -1431,7 +1431,9 @@ fireauth.util.utcTimestampToDateString = function(utcTimestamp) {
 
 /** @return {boolean} Whether indexedDB is available. */
 fireauth.util.isIndexedDBAvailable = function() {
-  return !!goog.global['indexedDB'];
+  // return !!goog.global['indexedDB'];
+  console.log('[--- utils.js:1435 ---]', 'is indexeddb available?');
+  return false;
 };
 
 
