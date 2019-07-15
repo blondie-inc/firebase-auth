@@ -225,6 +225,7 @@ fireauth.authStorage.Manager = function(
  */
 fireauth.authStorage.Manager.getInstance = function() {
   // Creates the default instance for Auth storage maanger.
+  console.log('[--- authstorage.js:228 ---]', 'get managaer instance');
   if (!fireauth.authStorage.Manager.instance_) {
     /**
      * @private {?fireauth.authStorage.Manager} The default storage manager
@@ -537,6 +538,7 @@ fireauth.authStorage.Manager.prototype.stopListeners_ = function() {
  * @private
  */
 fireauth.authStorage.Manager.prototype.storageChangeEvent_ = function(data) {
+  console.log('[--- authstorage.js:540 ---]', this.safariLocalStorageNotSynced_);
   if (data && data.getBrowserEvent) {
     var event = /** @type {!goog.events.BrowserEvent} */ (data);
     var key = event.getBrowserEvent().key;

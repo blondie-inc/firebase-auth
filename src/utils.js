@@ -590,6 +590,9 @@ fireauth.util.isIOS7Or8 = function(opt_userAgent) {
  */
 fireauth.util.isSafariLocalStorageNotSynced = function() {
   var ua = fireauth.util.getUserAgentString();
+  console.log('[--- utils.js:593 ---]', ua);
+  console.log('[--- utils.js:594 ---]', fireauth.util.iframeCanSyncWebStorage(ua));
+  console.log('[--- utils.js:595 ---]', fireauth.util.isIframe());
   // Safari or iOS browser and embedded in an iframe.
   if (!fireauth.util.iframeCanSyncWebStorage(ua) && fireauth.util.isIframe()) {
     return true;
