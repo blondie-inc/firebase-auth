@@ -34,7 +34,6 @@ goog.require('goog.array');
  * @implements {fireauth.storage.Storage}
  */
 fireauth.storage.HybridIndexedDB = function(fallbackStorage) {
-  console.log('[--- hybridindexeddb.js:37 ---]', fallbackStorage);
   var self = this;
   var storage = null;
   /**

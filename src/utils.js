@@ -1434,15 +1434,12 @@ fireauth.util.utcTimestampToDateString = function(utcTimestamp) {
 
 /** @return {boolean} Whether indexedDB is available. */
 fireauth.util.isIndexedDBAvailable = function() {
-  // return !!goog.global['indexedDB'];
-  console.log('[--- utils.js:1435 ---]', 'is indexeddb available?');
   return false;
 };
 
 
 /** @return {boolean} Whether current mode is Auth handler or iframe. */
 fireauth.util.isAuthHandlerOrIframe = function() {
-  console.log('[--- utils.js:1442 ---]', goog.global);
   return !!(fireauth.util.getObjectRef('fireauth.oauthhelper', goog.global) ||
             fireauth.util.getObjectRef('fireauth.iframe', goog.global));
 };
@@ -1450,19 +1447,6 @@ fireauth.util.isAuthHandlerOrIframe = function() {
 
 /** @return {boolean} Whether indexedDB is used to persist storage. */
 fireauth.util.persistsStorageWithIndexedDB = function() {
-  // This will cover:
-  // IE11, Edge when indexedDB is available (this is unavailable in InPrivate
-  // mode). (SDK, OAuth handler and iframe)
-  // Any environment where indexedDB is available (SDK only).
-
-  // In a browser environment, when an iframe and a popup web storage are not
-  // synchronized, use the indexedDB fireauth.storage.Storage implementation.
-  // return (fireauth.util.isLocalStorageNotSynchronized() ||
-  //         !fireauth.util.isAuthHandlerOrIframe()) &&
-  //        fireauth.util.isIndexedDBAvailable();
-
-  console.log('[--- utils.js:1461 ---]', 'persist storage with indexed db');
-
   return false;
 };
 

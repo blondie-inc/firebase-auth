@@ -35,7 +35,6 @@ goog.require('fireauth.util');
  * @constructor
  */
 fireauth.storage.Factory = function(env) {
-  console.log('[--- factory.js:38 ---]', env);
   /** @const @private {!fireauth.storage.Factory.EnvConfigType} */
   this.env_ = env;
 };
@@ -120,6 +119,7 @@ fireauth.storage.Factory.prototype.makePersistentStorage = function() {
         fireauth.util.isWorker() ?
         new fireauth.storage.InMemoryStorage() : new this.env_.persistent());
   }
+
   return new this.env_.persistent();
 };
 
